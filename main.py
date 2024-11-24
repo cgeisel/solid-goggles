@@ -6,8 +6,14 @@ import tcod
 import color
 import exceptions
 import input_handlers
+from pathlib import Path
 import setup_game
+import sys
 
+# The base directory, this is sys._MEIPASS when in one-file mode.
+BASE_DIR = Path(getattr(sys, __file__, "."))
+
+FONT_PATH = BASE_DIR / "data/dejavu10x10_gs_tc.png"
 
 def save_game(handler: input_handlers.BaseEventHandler, filename: str) -> None:
     """If the current event handler has an active Engine then save it."""
@@ -21,7 +27,7 @@ def main() -> None:
     screen_height = 50
 
     tileset = tcod.tileset.load_tilesheet(
-        "dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD
+        FONT_PATH, 32, 8, tcod.tileset.CHARMAP_TCOD
     )
 
     handler: input_handlers.BaseEventHandler = setup_game.MainMenu()

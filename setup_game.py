@@ -14,11 +14,14 @@ from engine import Engine
 import entity_factories
 from game_map import GameWorld
 import input_handlers
+from main import BASE_DIR
+from os import path
 from procgen import generate_dungeon
 
+MENU_BG_PATH = BASE_DIR / "data/menu_background.png"
 
 # Load the background image and remove the alpha channel.
-background_image = tcod.image.load("menu_background.png")[:, :, :3]
+background_image = tcod.image.load(MENU_BG_PATH)[:, :, :3]
 
 
 def new_game() -> Engine:
