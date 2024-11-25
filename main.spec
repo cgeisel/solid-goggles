@@ -1,42 +1,38 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-block_cipher = None
-
 
 a = Analysis(
-    ["main.py"],
+    ['main.py'],
+    pathex=[],
     binaries=[],
-    datas=[("data", "data")],  # Include all files in the 'data' directory.
+    datas=[('data', 'data')],
     hiddenimports=[],
     hookspath=[],
+    hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
-    cipher=block_cipher,
     noarchive=False,
+    optimize=0,
 )
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+pyz = PYZ(a.pure)
+
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
-    name="start",  # Name of the executable.
+    name='main',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,  # Set to False to disable the Windows terminal.
-    icon="icon.ico",  # Windows icon file.
-)
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    strip=False,
-    upx=True,
     upx_exclude=[],
-    name="roguelike",  # Name of the distribution directory.
+    runtime_tmpdir=None,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
 )

@@ -2,19 +2,20 @@
 import traceback
 
 import tcod
+import os
 
 import color
 import exceptions
 import input_handlers
 from pathlib import Path
 import setup_game
-import sys
 
-# The base directory, this is sys._MEIPASS when in one-file mode.
-BASE_DIR = Path(getattr(sys, "__file__", "."))
 
-FONT_PATH = BASE_DIR / "data/dejavu10x10_gs_tc.png"
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
+FONT_PATH = BASE_DIR + "/data/dejavu10x10_gs_tc.png"
+
+print("BASE_DIR:", BASE_DIR)
 print("FONT_PATH:", FONT_PATH)
 
 def save_game(handler: input_handlers.BaseEventHandler, filename: str) -> None:

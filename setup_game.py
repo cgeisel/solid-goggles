@@ -19,7 +19,9 @@ from main import BASE_DIR
 from os import path
 from procgen import generate_dungeon
 
-MENU_BG_PATH = BASE_DIR / "data/menu_background.png"
+MENU_BG_PATH = BASE_DIR + "/data/menu_background.png"
+
+print("MENU_BG_PATH:", MENU_BG_PATH)
 
 # Load the background image and remove the alpha channel.
 background_image = tcod.image.load(MENU_BG_PATH)[:, :, :3]
