@@ -57,7 +57,7 @@ class MessageLog:
     @classmethod
     def render_messages(
         cls,
-        console: tcod.Console,
+        console: tcod.console.Console,
         x: int,
         y: int,
         width: int,

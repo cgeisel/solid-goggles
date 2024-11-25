@@ -11,9 +11,11 @@ import setup_game
 import sys
 
 # The base directory, this is sys._MEIPASS when in one-file mode.
-BASE_DIR = Path(getattr(sys, __file__, "."))
+BASE_DIR = Path(getattr(sys, "__file__", "."))
 
 FONT_PATH = BASE_DIR / "data/dejavu10x10_gs_tc.png"
+
+print("FONT_PATH:", FONT_PATH)
 
 def save_game(handler: input_handlers.BaseEventHandler, filename: str) -> None:
     """If the current event handler has an active Engine then save it."""
@@ -39,7 +41,7 @@ def main() -> None:
         title="Yet Another Roguelike Tutorial",
         vsync=True,
     ) as context:
-        root_console = tcod.Console(screen_width, screen_height, order="F")
+        root_console = tcod.console.Console(screen_width, screen_height, order="F")
         try:
             while True:
                 root_console.clear()
